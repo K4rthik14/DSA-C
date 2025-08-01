@@ -1,5 +1,6 @@
 #include <stdio.h>
 #define MAX 100
+//its a structure
 typedef struct {
 int row;
 int col;
