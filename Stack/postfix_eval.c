@@ -1,76 +1,78 @@
-#include <stdio.h>
-#include <ctype.h>
+// program to perform a evaluevation of a postfix equation.
+ #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
 #define MAX 100
-
-int stack[MAX];
+int stack[100];
 int top = -1;
 
-// Stack operations
-void push(int value) {
-    if (top == MAX - 1) {
-        printf("Stack Overflow\n");
+void push(int value){
+    if(top == MAX -1){
+        printf("StackOVerflow\n");
         exit(1);
+
     }
-    stack[++top] = value;
+ stack [++top] = value;
+
 }
 
-int pop() {
-    if (top == -1) {
-        printf("Stack Underflow\n");
+int pop(){
+    if(top == -1 ){
+        printf("Stack Underflow");
         exit(1);
     }
     return stack[top--];
+
 }
 
-// Function to evaluate a postfix expression
-int evaluatePostfix(char postfix[]) {
-    int i, operand1, operand2, result;
+int evaluatePostfix(char postfix[]){
+    int i, ope1, ope2, result;
     char ch;
-
-    for (i = 0; postfix[i] != '\0'; i++) {
+    for(i=0; postfix[i] != '\0'; i++){
         ch = postfix[i];
 
-        if (isdigit(ch)) {
-            // Convert character to integer and push
+        if(isdigit(ch)){
             push(ch - '0');
-        } else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
-            operand2 = pop();
-            operand1 = pop();
 
-            switch (ch) {
-            case '+':
-                result = operand1 + operand2;
+        } else if(ch == '+'||ch == '*'||ch == '-'||ch == '/')
+        {
+            ope2= pop();
+            ope1= pop();
+
+            switch(ch){
+                case '+':
+                result = ope1 + ope2;
                 break;
-            case '-':
-                result = operand1 - operand2;
+                case '-':
+                result = ope1 - ope2;
                 break;
-            case '*':
-                result = operand1 * operand2;
+                case '*':
+                result = ope1 * ope2;
                 break;
-            case '/':
-                if (operand2 == 0) {
+                case '/':
+                if(ope2==0){
                     printf("Division by zero error\n");
                     exit(1);
                 }
-                result = operand1 / operand2;
-                break;
-            default:
-                printf("Unknown operator: %c\n", ch);
-                exit(1);
+            result = ope1 / ope2;
+            break;
+        default:
+         printf("Unknown Operator: %c\n");
+         exit(1);
+
             }
-            push(result);
+ 
+        push(result);
         }
     }
+    return pop();
 
-    return pop(); // Final result
 }
-
-int main() {
+void main(){
     char postfix[MAX];
-    int result;
-
+    char result;
     printf("Enter a postfix expression (single-digit operands): ");
     scanf("%s", postfix);
 
@@ -80,3 +82,4 @@ int main() {
 
     return 0;
 }
+
