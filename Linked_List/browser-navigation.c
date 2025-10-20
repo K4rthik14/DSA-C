@@ -1,24 +1,22 @@
-// #include <stdio.h>
+//Browser navigation using the dobly linked list
+#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-// Structure to represent each web page
 typedef struct Node {
-    char url[100];
-    struct Node *prev, *next;
-} Node;
+    char url[50];
+    struct Node *prev , *next ;
+}Node;
 
-Node *current = NULL;  // Pointer to current page
+Node *current = NULL;
 
-// Function to create a new node
-Node* createNode(char *url) {
-    Node *newNode = (Node*)malloc(sizeof(Node));
-    strcpy(newNode->url, url);
+Node * createNode(char *url){
+    Node * newNode = (Node*)malloc(sizeof(Node));
+    strcpy(newNode->url,url);
     newNode->prev = newNode->next = NULL;
     return newNode;
 }
 
-// Function to visit a new page
+//visit a new page
 void visitPage(char *url) {
     Node *newNode = createNode(url);
 
@@ -43,7 +41,7 @@ void visitPage(char *url) {
     printf("Visited: %s\n", url);
 }
 
-// Function to move Back
+//Function to move Back
 void goBack() {
     if (current != NULL && current->prev != NULL) {
         current = current->prev;
@@ -63,6 +61,7 @@ void goForward() {
     }
 }
 
+
 // Function to show current page
 void showCurrent() {
     if (current != NULL)
@@ -70,6 +69,7 @@ void showCurrent() {
     else
         printf("No page opened.\n");
 }
+
 
 // Function to display entire browsing history up to current page
 void showHistory() {
@@ -121,7 +121,7 @@ int main() {
             case 3:
                 goForward();
                 break;
-            case 4:
+            c`ase 4:
                 showCurrent();
                 break;
             case 5:
