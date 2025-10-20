@@ -1,0 +1,23 @@
+To do DSA
+
+Graphs:
+	DFS Traversal
+	BFS Traversal
+Trees :
+	Tree Implementation
+	Binary Tree
+	
+Linked List :
+	Polynomial Addition and Multiplication
+	Browser Navigation Doubly LL
+Sorting Algorithms :
+	Merge Sort
+	Quick Sort
+	Radix Sort
+	Selection Sort
+	
+And filter the previous codes
+
+	
+	
+
