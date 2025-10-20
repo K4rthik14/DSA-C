@@ -1,6 +1,7 @@
 //Browser navigation using the dobly linked list
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct Node {
     char url[50];
@@ -121,7 +122,7 @@ int main() {
             case 3:
                 goForward();
                 break;
-            c`ase 4:
+            case 4:
                 showCurrent();
                 break;
             case 5:
